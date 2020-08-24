@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,26 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home', ['name' => 'Miha']);
-// });
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('posts', 'PostController');
-
-// Route::get('/post/create', function () {
-//     return response()->json([
-//         'id' => 1,
-//         'naslov' => 'Ta veseli dan',
-//         'vsebina' => 'Vsebina pripovedi',
-//         'avtor' => 'A. Linhart',
-//     ]);
-// });
-
-// Route::get('/post/1/edit', function () {
-//     // TODO
-//     return redirect();
-// });
+Route::get('/posts', 'PostController@index')->name('posts.index');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts', 'PostController@store')->name('posts.store');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
+Route::patch('/posts/{post}', 'PostController@update')->name('posts.update');
+Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
