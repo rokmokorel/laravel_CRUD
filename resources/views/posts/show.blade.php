@@ -27,10 +27,27 @@
         <div class="col-sm-8 pl-5">
             @foreach ($comments as $comment)
                 <div class="col-sm-12 p-3 m-2 rounded border">
-                    <div>Avtor: {{ $comment->author }}</div>
+                    <div class="row pl-3 pb-3">
+                        <div class="pr-5 pt-2">Avtor: {{ $comment->author }}</div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div><br />
+                        @endif
+                        <form method="post" action="{{ route('posts.store') }}">
+                            @csrf
+                            <input type="hidden" name="title" value="THREAD: {{ $post->title }}" />
+                            <input type="hidden" name="body" value="{{ $post->body }}" />
+                            <input type="hidden" name="author" value="{{ $post->author }}" />
+                            <button type="submit" class="btn btn-primary">Ustvari nov thread</button>
+                        </form>
+                    </div>
                     <div>Kometar: {{ $comment->body }}</div>
                     <div>Objavljen: {{ $comment->created_at }}</div>
-                    <a href=""></a>
                 </div>
             @endforeach
         </div>
