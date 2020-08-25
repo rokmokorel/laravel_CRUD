@@ -2,11 +2,8 @@
 @section('content')
     <div class="container">
         <div class="pt-5 d-flex justify-content-center">
-            <div class="col-5">
-                <h1 class="pb-3">Dobrodošel na mojem blogu</h1>
-                <a href="{{ route('posts.index') }}">Pregled dodanih prispevkov</a><br>
-                <a href="{{ route('posts.create') }}">Dodaj prispevek</a><br>
-            </div>
+            <img src="https://assets.sbnation.com/assets/1277840/149844782.jpg" alt="Logo" width="400">
+
         </div>
     </div>
 @endsection

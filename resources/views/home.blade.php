@@ -4,16 +4,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Dobrodošli na mojem blogu') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
+                        <a href="{{ route('posts.index') }}">Pregled dodanih prispevkov</a><br>
+                        <a href="{{ route('posts.create') }}">Dodaj prispevek</a><br>
                     </div>
                 </div>
             </div>
