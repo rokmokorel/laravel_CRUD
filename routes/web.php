@@ -35,3 +35,11 @@ Route::patch('/comments/{comments}', 'CommentsController@update')->name(
     'comments.update');
 Route::delete('/comments/{comments}',
     'CommentsController@destroy')->name('comments.destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
