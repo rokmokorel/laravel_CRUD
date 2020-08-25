@@ -5,7 +5,9 @@
         <div class="col-sm-10 offset-sm-1 pt-4">
             <div class="row">
                 <h1 class="display-5">{{ $post->title }}</h1>
-                <a href="{{ route('index') }}" class="btn btn-secondary ml-4 m-2 pt-2">Domov</a>
+                @if (Auth::check())
+                    <a href="/home" class="ml-4 m-2 pt-2">Nadzorna plošča</a>
+                @endif
             </div>
             <div>
                 <div class="pb-2">
