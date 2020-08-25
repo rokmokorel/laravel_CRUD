@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="body">Vsebina:</label>
-                <input type="text" class="form-control" name="body" />
+                <textarea type="text" class="form-control" name="body" ></textarea>
             </div>
             <div class="form-group">
                 <label for="author">Avtor:</label>

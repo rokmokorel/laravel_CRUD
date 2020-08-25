@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="body">Komentar:</label>
-                    <input type="text" class="form-control" name="body" />
+                    <textarea type="text" class="form-control" name="body" ></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Oddaj komentar</button>
             </form>
