@@ -8,33 +8,49 @@ use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function index(Post $post)
+    public function create($post_id)
     {
-        return ;
+        return view('comments.create', ['post_id'=>$post_id]);
     }
 
-
-    public function create(Post $post)
-    {
-        return ;
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
 
 
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        return view('comments.edit', compact('comments'));
     }
 
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'post_id' => 'required',
+            'author' => 'required',
+            'body' => 'required'
+        ]);
+        $comment = new Comment([
+            'post_id' => $request->get('post_id'),
+            'author' => $request->get('author'),
+            'body' => $request->get('body')
+        ]);
+
+        $comment->save();
+        dd($request);
+        // return redirect('/posts'.$request->post->id)->with('success', 'Komentar je shranjen!!');
+    }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'body' => 'required',
+            'author' => 'required',
+        ]);
+        $comment = Comment::findOrFail($id);
+        $comment->body =  $request->get('body');
+        $comment->author = $request->get('author');
+        $comment->save();
+        return redirect('/posts')->with('success', 'Komentar je popravljen!');
     }
 
     public function destroy($id)

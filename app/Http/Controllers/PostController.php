@@ -18,7 +18,6 @@ class PostController extends Controller
 
     public function create()
     {
-
         return view('posts.create');
     }
 
@@ -45,11 +44,12 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return response()->json([
-            'naslov' => $post['title'],
-            'vsebina' => $post['body'],
-            'avtor' => $post['author']
-        ]);
+        // return response()->json([
+        //     'naslov' => $post['title'],
+        //     'vsebina' => $post['body'],
+        //     'avtor' => $post['author']
+        // ]);
+        return view('posts.show', compact('post'));
     }
 
 

@@ -10,6 +10,5 @@ class Comment extends Model
         'post_id',
         'author',
         'body',
-        'mail'
     ];
 }
