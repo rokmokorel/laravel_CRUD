@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="pt-5 d-flex justify-content-center">
         <div class="col-5">

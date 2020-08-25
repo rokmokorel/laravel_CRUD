@@ -1,4 +1,5 @@
-@extends('base')@section('main')
+@extends('layouts.app')
+@section('content')
     <div class="col-sm-12 pt-4">
         @if (session()->get('success'))
             <div class="alert alert-success">

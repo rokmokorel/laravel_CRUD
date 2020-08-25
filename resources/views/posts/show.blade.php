@@ -1,5 +1,6 @@
-@extends('base')@section('main')
-    <div class="col-sm-12 offset-sm-2 pt-4">
+@extends('layouts.app')
+@section('content')
+    <div class="col-sm-10 offset-sm-1 pt-4">
         <div class="row">
             <h1 class="display-5">{{ $post->title }}</h1>
             <a href="{{ route('index') }}" class="btn btn-secondary ml-4 m-2 pt-2">Domov</a>

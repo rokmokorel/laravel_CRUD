@@ -1,4 +1,5 @@
-@extends('base')@section('main')
+@extends('layouts.app')
+@section('content')
     <div class="col-sm-8 offset-sm-2 pt-4">
         <div class="row">
             <h1 class="display-8">Dodaj prispevek</h1>
