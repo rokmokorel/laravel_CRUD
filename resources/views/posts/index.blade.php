@@ -8,7 +8,7 @@
     </div>
     <div class="col-sm-12">
         <div class="row">
-            <h1 class="display-8">Prispevki</h1>
+            <h1 class="display-5">Prispevki</h1>
             <a href="{{ route('index') }}" class="btn btn-secondary ml-4 m-2 pt-2">Domov</a>
         </div>
         <table class="table table-striped">

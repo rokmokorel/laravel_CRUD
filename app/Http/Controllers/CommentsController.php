@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function create($post_id)
+    public function create()
     {
-        return view('comments.create', ['post_id'=>$post_id]);
+        $post_id = $_GET['post_id'];
+        return view('comments.create', ["post_id"=>$post_id]);
     }
 
 
@@ -36,8 +37,7 @@ class CommentsController extends Controller
         ]);
 
         $comment->save();
-        dd($request);
-        // return redirect('/posts'.$request->post->id)->with('success', 'Komentar je shranjen!!');
+        return redirect('/posts/'. $request->post_id)->with('success', 'Komentar je shranjen!!');
     }
 
     public function update(Request $request, $id)

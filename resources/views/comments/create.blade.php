@@ -1,7 +1,7 @@
 @extends('base')@section('main')
     <div class="col-sm-8 offset-sm-2 pt-4">
         <div class="row">
-            <h1 class="display-8">Dodaj komentar</h1>
+            <h1 class="display-5">Dodaj komentar</h1>
             <a href="{{ route('index') }}" class="btn btn-secondary ml-4 m-2 pt-2">Domov</a>
         </div>
         <div>

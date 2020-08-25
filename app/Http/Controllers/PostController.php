@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -44,12 +45,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        // return response()->json([
-        //     'naslov' => $post['title'],
-        //     'vsebina' => $post['body'],
-        //     'avtor' => $post['author']
-        // ]);
-        return view('posts.show', compact('post'));
+        $comments = Comment::where('post_id', $id)->get();
+        return view('posts.show', compact('post', 'comments'));
     }
 
 
