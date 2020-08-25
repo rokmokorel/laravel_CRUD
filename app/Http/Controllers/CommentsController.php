@@ -11,10 +11,8 @@ class CommentsController extends Controller
     public function create()
     {
         $post_id = $_GET['post_id'];
-        return view('comments.create', ["post_id"=>$post_id]);
+        return view('comments.create', ["post_id" => $post_id]);
     }
-
-
 
     public function edit($id)
     {
@@ -24,7 +22,6 @@ class CommentsController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'post_id' => 'required',
             'author' => 'required',
@@ -37,7 +34,7 @@ class CommentsController extends Controller
         ]);
 
         $comment->save();
-        return redirect('/posts/'. $request->post_id)->with('success', 'Komentar je shranjen!!');
+        return redirect('/posts/' . $request->post_id)->with('success', 'Komentar je shranjen!!');
     }
 
     public function update(Request $request, $id)
@@ -53,10 +50,11 @@ class CommentsController extends Controller
         return redirect('/posts')->with('success', 'Komentar je popravljen!');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $comment = Comment::findOrFail($id);
+        // dd($request->input('post'),$request->input('id'));
+        $comment = Comment::findOrFail($request->input('id'));
         $comment->delete();
-        return redirect('/posts')->with('success', 'Komentar odstranjen!!!');
+        return redirect('/posts/' . $request->input('post'))->with('success', 'Komentar odstranjen!!!');
     }
 }

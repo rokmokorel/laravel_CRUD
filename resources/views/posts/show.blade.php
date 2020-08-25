@@ -45,6 +45,16 @@
                             <input type="hidden" name="author" value="{{ $post->author }}" />
                             <button type="submit" class="btn btn-primary">Ustvari nov thread</button>
                         </form>
+                        <div class="pl-3">
+                            <form method="post"
+                                action="{{ route('comments.destroy', ['1']) }}">
+                                @method('DELETE')
+                                @csrf
+                                <input type="hidden" name="post" value="{{ $post->id }}" />
+                                <input type="hidden" name="id" value="{{ $comment->id }}" />
+                                <button type="delete" class="btn btn-danger">Izbriši</button>
+                            </form>
+                        </div>
                     </div>
                     <div>Kometar: {{ $comment->body }}</div>
                     <div>Objavljen: {{ $comment->created_at }}</div>

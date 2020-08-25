@@ -46,7 +46,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $comments = Comment::where('post_id', $id)->get();
+        $comments = Comment::where('post_id', $id)->get()->reverse();
         return view('posts.show', compact('post', 'comments'));
     }
 
