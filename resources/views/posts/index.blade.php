@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($posts as $post)
+                    @foreach ($posts->reverse() as $post)
                         <tr>
                             <td>{{ $post->id }}</td>
                             <td width="120">{{ $post->title }}</td>
