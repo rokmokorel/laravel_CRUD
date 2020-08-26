@@ -12,7 +12,9 @@
         <div class="col-sm-12">
             <div class="row">
                 <h1 class="display-5">Prispevki</h1>
-                <a href="{{ route('index') }}" class="btn btn-secondary ml-4 m-2 pt-2">Domov</a>
+                @if (Auth::check())
+                    <a href="/home" class="ml-4 m-2 pt-2">Nadzorna plošča</a>
+                @endif
             </div>
             <table class="table table-striped">
                 <thead>
@@ -34,12 +36,14 @@
                             <td>
                                 <div class="row">
                                     <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Prikaži</a>
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Uredi</a>
-                                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Izbriši</button>
-                                    </form>
+                                    @if (Auth::check())
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Uredi</a>
+                                        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit">Izbriši</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

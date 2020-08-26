@@ -14,17 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
-
+Route::get('/', 'PostController@index')->name('index');
 Route::get('/posts', 'PostController@index')->name('posts.index');
-Route::get('/posts/create', 'PostController@create')->name('posts.create');
-Route::post('/posts', 'PostController@store')->name('posts.store');
 Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
-Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
-Route::patch('/posts/{post}', 'PostController@update')->name('posts.update');
-Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
+
+Route::get('/posts/create', 'PostController@create')->middleware(
+    'auth')->name('posts.create');
+Route::post('/posts', 'PostController@store')->middleware(
+    'auth')->name('posts.store');
+Route::get('/posts/{post}/edit', 'PostController@edit')->middleware(
+    'auth')->name('posts.edit');
+Route::patch('/posts/{post}', 'PostController@update')->middleware(
+    'auth')->name('posts.update');
+Route::delete('/posts/{post}', 'PostController@destroy')->middleware(
+    'auth')->name('posts.destroy');
+
 
 Route::get('/comments/create', 'CommentsController@create')->name(
     'comments.create');
@@ -35,10 +39,6 @@ Route::patch('/comments/{comments}', 'CommentsController@update')->name(
     'comments.update');
 Route::delete('/comments/{comments}',
     'CommentsController@destroy')->name('comments.destroy');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
